@@ -1,0 +1,24 @@
+import pleasetransfer
+t=pleasetransfer.pleasetransfer(False)#False for receiver
+t.rec_setup()
+t.send_setup()
+# t.settimeout(10)
+while True:
+    rcv = t.recbits()
+    print len(rcv)
+    print 'rcv:' + rcv + '\n'
+    seqnumber = rcv[2:18]
+    seqnumber = '0'+'0'+seqnumber
+    data = rcv[19:27]
+    checksum = rcv[28:]
+
+    print 'seqnumber:' + seqnumber + '\n'
+    print 'data:' + data + '\n'
+    print 'checksum:' + checksum + '\n'
+
+    # check if packet corrupt: checksum
+
+    # check if correct segment was rcved
+
+	# check to see if the seqnumber is correct
+    t.sendbits(seqnumber)
