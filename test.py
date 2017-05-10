@@ -7,7 +7,7 @@ sendbase = 0
 seq = []
 i = 0
 
-file_object = open("file1.txt","r");
+file_object = open("test.txt","r");
 output = open("output.txt","w");
 
 for line in file_object:
@@ -19,12 +19,13 @@ output.close()
 
 def filechunks(inputfile, chunksize=1500):
 	with open(inputfile, "rb") as f:
-    		while True:
-        		chunk = f.read(chunksize)
-        		if chunk:
-        			yield chunk
-    			else:
-    				break
+			while True:
+				chunk = f.read(chunksize)
+				if chunk:
+					yield chunk
+				else:
+					break
+    				
 for chunk in filechunks('output.txt'):
 	new = [chunk,i]
 	seq = new + seq
